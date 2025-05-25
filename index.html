@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>고은호 | Unity3D Developer Portfolio</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20px;
+            background: #ffffff;
+        }
+        
+        /* Header Section */
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            background: linear-gradient(135deg, #003366 0%, #004080 100%);
+            color: white;
+            margin: -20px -20px 30px -20px;
+            position: relative;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .header .role {
+            font-size: 20px;
+            margin-top: 10px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .contact-bar {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        
+        .contact-bar span {
+            margin: 0 15px;
+            font-size: 14px;
+        }
+        
+        /* Section Headers */
+        h2 {
+            color: #003366;
+            font-size: 24px;
+            margin: 40px 0 20px 0;
+            position: relative;
+            padding-left: 20px;
+            font-weight: 600;
+        }
+        
+        h2:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background: #003366;
+        }
+        
+        /* Summary Box */
+        .summary-box {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #003366;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .skill-category {
+            background: #ffffff;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #003366;
+        }
+        
+        .skill-category h3 {
+            color: #003366;
+            font-size: 16px;
+            margin: 0 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: #e3f2fd;
+            color: #003366;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .skill-tag.strong {
+            background: #003366;
+            color: white;
+        }
+        
+        /* Career Timeline */
+        .career-timeline {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .career-timeline:before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e0e0e0;
+        }
+        
+        .career-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        
+        .career-item:before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #003366;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #e0e0e0;
+        }
+        
+        .career-company {
+            font-weight: 600;
+            color: #003366;
+            font-size: 16px;
+        }
+        
+        .career-position {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .career-period {
+            color: #999;
+            font-size: 13px;
+            font-style: italic;
+        }
+        
+        /* Project Cards */
+        .project-card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+            page-break-inside: avoid;
+        }
+        
+        .project-card:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .project-title {
+            font-size: 18px;
+            color: #003366;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        .project-company {
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+        
+        .project-period {
+            font-size: 13px;
+            color: #999;
+            font-style: italic;
+        }
+        
+        .project-overview {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .project-overview-item {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .project-overview-label {
+            font-weight: 600;
+            color: #003366;
+            min-width: 80px;
+        }
+        
+        .project-section {
+            margin-bottom: 20px;
+        }
+        
+        .project-section h4 {
+            color: #003366;
+            font-size: 15px;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+        
+        .project-section ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .project-section li {
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px 15px;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .highlight-box strong {
+            color: #856404;
+        }
+        
+        /* Project Images */
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .project-image {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        
+        /* Education Section */
+        .education-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #003366;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .page-break {
+                page-break-after: always;
+            }
+            
+            .project-card {
+                break-inside: avoid;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            .header {
+                margin: 0 0 20px 0;
+                padding: 30px 0;
+            }
+            
+            .project-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>고은호</h1>
+        <div class="role">Unity3D Developer | Software Engineer</div>
+        <div class="contact-bar">
+            <span>📱 010-5557-3642</span>
+            <span>✉️ platus1@naver.com</span>
+            <span>📍 서울특별시 강남구</span>
+        </div>
+    </div>
+    
+    <div class="summary-box">
+        <strong>5년 이상</strong>의 Unity3D 개발 경험을 보유한 소프트웨어 엔지니어입니다. 
+        <strong>3D 시뮬레이션, 메타버스 플랫폼, VR/AR</strong> 등 다양한 프로젝트를 성공적으로 수행했으며, 
+        현재 블루캅 HDS에서 <strong>차세대 보안 관제 플랫폼</strong>의 3D 공간 생성 저작도구를 개발하고 있습니다.
+        특히 <strong>GIS 데이터 시각화</strong>와 <strong>절차적 모델링</strong> 분야에 전문성을 보유하고 있습니다.
+    </div>
+    
+    <h2>핵심 역량</h2>
+    <div class="skills-grid">
+        <div class="skill-category">
+            <h3>주력 기술</h3>
+            <div class="skill-tags">
+                <span class="skill-tag strong">Unity3D (5년+)</span>
+                <span class="skill-tag strong">C# (5년+)</span>
+                <span class="skill-tag">Shader Graph</span>
+                <span class="skill-tag">WebGL</span>
+            </div>
+        </div>
+        
+        <div class="skill-category">
+            <h3>3D & 시각화</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">CAD Engine</span>
+                <span class="skill-tag">절차적 모델링</span>
+                <span class="skill-tag">VR/AR</span>
+                <span class="skill-tag">GIS 시각화</span>
+            </div>
+        </div>
+        
+        <div class="skill-category">
+            <h3>백엔드 & DB</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">Oracle DB</span>
+                <span class="skill-tag">RESTful API</span>
+                <span class="skill-tag">Photon Server</span>
+            </div>
+        </div>
+        
+        <div class="skill-category">
+            <h3>개발 도구</h3>
+            <div class="skill-tags">
+                <span class="skill-tag">Git</span>
+                <span class="skill-tag">SourceTree</span>
+                <span class="skill-tag">WPF</span>
+                <span class="skill-tag">Unreal Engine</span>
+            </div>
+        </div>
+    </div>
+    
+    <h2>경력 사항</h2>
+    <div class="career-timeline">
+        <div class="career-item">
+            <div class="career-company">블루캅 HDS 주식회사</div>
+            <div class="career-position">Unity3D Developer</div>
+            <div class="career-period">2024.11 - 현재</div>
+        </div>
+        
+        <div class="career-item">
+            <div class="career-company">티맥스 메타에이아이</div>
+            <div class="career-position">팀장/매니저</div>
+            <div class="career-period">2022.01 - 2024.11 (2년 11개월)</div>
+        </div>
+        
+        <div class="career-item">
+            <div class="career-company">에스티로직</div>
+            <div class="career-position">사원</div>
+            <div class="career-period">2021.05 - 2022.01 (9개월)</div>
+        </div>
+        
+        <div class="career-item">
+            <div class="career-company">피티씨</div>
+            <div class="career-position">연구원</div>
+            <div class="career-period">2020.06 - 2021.05 (1년)</div>
+        </div>
+        
+        <div class="career-item">
+            <div class="career-company">판타포</div>
+            <div class="career-position">사원</div>
+            <div class="career-period">2019.02 - 2020.06 (1년 5개월)</div>
+        </div>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h2>프로젝트 포트폴리오</h2>
+    
+    <!-- Project 1 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">🏢 경비안전 특화형 3D 공간 생성 저작도구</h3>
+            <div>
+                <div class="project-company">블루캅 HDS</div>
+                <div class="project-period">2024.11 - 현재</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>보안 관제를 위한 3D 건물 모델링 저작도구 개발</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">플랫폼</span>
+                <span>Unity 2022.3 LTS</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">역할</span>
+                <span>Unity 3D 개발자</span>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>✅ 구현 완료 기능</h4>
+            <ul>
+                <li>3D 건물 시각화 시스템 (BuildingVisualizerView)</li>
+                <li>메시 생성기 구현: 벽(WallMeshGenerator), 바닥(FloorMeshGenerator), 지붕(RoofMeshGenerator), 개구부(OpeningMeshGenerator)</li>
+                <li>포인트 드래그 기반 실시간 건물 구조 편집 시스템 (PointDragController)</li>
+                <li>건물/층 계층 구조 트리뷰 표시</li>
+                <li>오브젝트 선택 및 속성 인스펙터 패널</li>
+            </ul>
+        </div>
+        
+        <div class="project-section">
+            <h4>🚀 개발 중인 기능</h4>
+            <ul>
+                <li>AI 도면 분석 마법사 모달 (도면 업로드 → AI 서버 분석 → 3D 자동 생성)</li>
+                <li>프로젝트 저장/로드 시스템</li>
+                <li>런타임 건물/층 CRUD 기능</li>
+                <li>2D 평면도 편집 모드</li>
+                <li>변형 기즈모 도구 (Move/Rotate/Scale)</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>기술적 특징:</strong> MVC 패턴 적용, JSON 기반 건물 구조 데이터 파싱, 실시간 메시 생성 및 편집
+        </div>
+    </div>
+    
+    <!-- Project 2 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">🤖 AI 학습용 가상 실내공간 3D 합성 데이터 제작</h3>
+            <div>
+                <div class="project-company">티맥스 메타에이아이</div>
+                <div class="project-period">2023.06 - 2023.12</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">발주기관</span>
+                <span>과학기술정보통신부</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>실내 환경 인식을 위한 가상 데이터 기반 3D 에셋 및 실내 공간 모델링 데이터 구축</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">역할</span>
+                <span>프로젝트 리더 (PL)</span>
+            </div>
+        </div>
+        
+        <div class="project-images">
+            <div>
+                <img src="nia1.png" alt="AI 학습 데이터 시각화" class="project-image">
+                <p class="image-caption">기본 렌더링 이미지와 각 정보들의 시각화</p>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>과제 수주를 위한 문서 작성 및 데이터 구축 전략 수립</li>
+                <li>Unity 3D를 활용한 가상 공간의 데이터 시각화를 위한 Shader 개발</li>
+                <li>200여종 공간의 렌더링 진행 및 데이터 시각화 진행</li>
+                <li>렌더링 툴을 활용한 데이터 저작, 품질관리, 검수</li>
+            </ul>
+        </div>
+        
+        <div class="project-section">
+            <h4>기술적 특징</h4>
+            <ul>
+                <li>Unity 3D 기반 대량 데이터 자동 생성 시스템 구축</li>
+                <li>Shader Graph를 활용한 다양한 정보의 시각화 (Depth, Normal, Segmentation 등)</li>
+                <li>품질 관리를 위한 자동화된 검증 시스템 구현</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>성과:</strong> 프로젝트 최종 평가 "보통" 등급 획득
+        </div>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <!-- Project 3 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">🌐 MINT 메타버스 플랫폼</h3>
+            <div>
+                <div class="project-company">티맥스 메타에이아이</div>
+                <div class="project-period">2022.01 - 2022.12</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">플랫폼</span>
+                <span>Windows, iOS, Android</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>교육 및 협업을 위한 메타버스 플랫폼 개발</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">팀 규모</span>
+                <span>4인 (개발 리딩)</span>
+            </div>
+        </div>
+        
+        <div class="project-images">
+            <div>
+                <img src="MI1.png" alt="MINT 메타버스 플랫폼 화면1" class="project-image">
+                <p class="image-caption">메타버스 공간 내 협업 화면</p>
+            </div>
+            <div>
+                <img src="MI2.png" alt="MINT 메타버스 플랫폼 화면2" class="project-image">
+                <p class="image-caption">가상 회의실 및 교육 환경</p>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>Unity 3D를 활용한 클라이언트 개발 리딩</li>
+                <li>다중 접속, 화상채팅, 음성채팅 기능 개발</li>
+                <li>자료(PDF, 이미지, 동영상 등) 공유를 통한 학습 기능 개발</li>
+                <li>캐릭터 커스터마이징, 룸 커스터마이징 기능 개발</li>
+                <li>유저 채팅, 쪽지, 친구 등록의 커뮤니케이션 기능 개발</li>
+            </ul>
+        </div>
+        
+        <div class="project-section">
+            <h4>기술적 특징</h4>
+            <ul>
+                <li>Photon Server 기반 실시간 다중 접속 시스템</li>
+                <li>WebRTC를 활용한 화상/음성 채팅 기능</li>
+                <li>실시간 자료 공유 시스템</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>🏆 성과:</strong> 스마트 헬스케어 협회 "닥터메타" 플랫폼으로 상용화
+        </div>
+    </div>
+    
+    <!-- Project 4 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">📡 SKT T-EOS Indoor 전파 통신 시뮬레이터 고도화</h3>
+            <div>
+                <div class="project-company">에스티로직</div>
+                <div class="project-period">2021.05 - 2021.12</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">발주처</span>
+                <span>SKT</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>건물 내부의 안테나 위치에 따른 신호 강도 시뮬레이션 클라이언트 제작</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">플랫폼</span>
+                <span>WebGL</span>
+            </div>
+        </div>
+        
+        <div class="project-images">
+            <div>
+                <img src="T-EOS1.png" alt="전파 시뮬레이션 화면1" class="project-image">
+                <p class="image-caption">도면 데이터를 기반으로 건물의 벽체 생성 및 시각화</p>
+            </div>
+            <div>
+                <img src="T-EOS2.png" alt="전파 시뮬레이션 화면2" class="project-image">
+                <p class="image-caption">사용자의 시나리오를 기반으로 건물 내 통신전파의 강도를 시각화</p>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>Unity 3D를 활용한 WebGL 클라이언트 개발</li>
+                <li>도면 데이터에서 추출된 벽면 데이터를 기반으로 Unity 3D 내부에서 건물 모델링 생성</li>
+                <li>사용자의 안테나 위치에 따른 전파 시뮬레이션 시나리오 설정 기능 제공</li>
+                <li>시뮬레이션 결과의 시각화</li>
+                <li>Node.js 기반 RESTful API 서버 및 Oracle DB 연동</li>
+            </ul>
+        </div>
+        
+        <div class="project-section">
+            <h4>기술적 특징</h4>
+            <ul>
+                <li>도면 데이터 기반의 3D 건물 모델링 생성 속도 개선</li>
+                <li>건물 내부의 모든 경우의 수를 시뮬레이션하여 최적의 결론 도출</li>
+                <li>실시간 전파 강도 계산 및 히트맵 시각화</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>성과:</strong> 프로젝트 개발 완료 및 납품 완료
+        </div>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <!-- Project 5 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">⚡ 전신주 위치 3D 시각화 지도</h3>
+            <div>
+                <div class="project-company">에스티로직</div>
+                <div class="project-period">2021.06 - 2021.08</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">발주처</span>
+                <span>한국전력공사</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>GIS 데이터를 활용한 3D 지도 개발 및 전신주 위치 시각화</span>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>Vworld의 데이터와 Unity 3D를 활용한 3D 지도 어플리케이션 개발</li>
+                <li>한국전력공사의 데이터를 활용한 전신주 위치, 모양, 전선 연결 시각화</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>성과:</strong> 프로젝트 개발 완료
+        </div>
+    </div>
+    
+    <!-- Project 6 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">🏗️ 토목 구조물 모델링 자동 생성 프로그램</h3>
+            <div>
+                <div class="project-company">피티씨</div>
+                <div class="project-period">2020.06 - 2021.05</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>BIM 설계를 위한 토목 구조물 자동 생성 프로그램 개발</span>
+            </div>
+            <div class="project-overview-item">
+                <span class="project-overview-label">기술스택</span>
+                <span>WPF, C#, Eyeshot 11 CAD Engine</span>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>각종 토목 구조물(박스, 거더, 지하차도 등)의 모델링 자동 생성을 위한 알고리즘 설계</li>
+                <li>데이터 입출력을 위한 UI 제작</li>
+                <li>사내 자체 개발 Geometric modeling kernel 사용 및 검증 작업</li>
+            </ul>
+        </div>
+        
+        <div class="project-section">
+            <h4>기술적 특징</h4>
+            <ul>
+                <li>파라메트릭 모델링 기반 자동 설계</li>
+                <li>수치 입력만으로 복잡한 토목 구조물 생성</li>
+                <li>CAD 엔진을 활용한 정밀한 3D 모델링</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-box">
+            <strong>성과:</strong> 프로젝트 개발 완료
+        </div>
+    </div>
+    
+    <!-- Project 7 -->
+    <div class="project-card">
+        <div class="project-header">
+            <h3 class="project-title">🥽 VR/AR 교육 프로그램</h3>
+            <div>
+                <div class="project-company">판타포</div>
+                <div class="project-period">2019.02 - 2020.06</div>
+            </div>
+        </div>
+        
+        <div class="project-overview">
+            <div class="project-overview-item">
+                <span class="project-overview-label">목적</span>
+                <span>VR/AR 환경에서 다수의 인원이 동시에 콘텐츠를 체험 및 공유할 수 있는 서비스 개발</span>
+            </div>
+        </div>
+        
+        <div class="project-section">
+            <h4>담당 업무</h4>
+            <ul>
+                <li>Unity 3D, Unreal Engine을 활용한 VR/AR 클라이언트 개발</li>
+                <li>다양한 VR 디바이스 지원 (Oculus, HTC Vive)</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="page-break"></div>
+    
+    <h2>학력</h2>
+    <div class="education-box">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div>
+                <h3 style="margin: 0; color: #003366;">인하대학교</h3>
+                <p style="margin: 5px 0;">컴퓨터정보공학과 학사</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="margin: 0; color: #666;">2010.03 - 2019.02</p>
+            </div>
+        </div>
+        <ul style="margin-top: 15px;">
+            <li>3D 그래픽스, 컴퓨터 비전 과목 수강</li>
+            <li>DirectX, OpenGL 프로그래밍 학습</li>
+        </ul>
+    </div>
+    
+    <div style="text-align: center; margin-top: 50px; color: #999; font-size: 12px;">
+        <p>Last Updated: 2025.05.25</p>
+    </div>
+</body>
+</html>
